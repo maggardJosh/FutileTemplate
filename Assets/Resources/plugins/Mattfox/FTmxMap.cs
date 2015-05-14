@@ -128,13 +128,20 @@ public class FTmxMap : FContainer
             }
         }
 
-        // return the name of the file from wantedNode
-        XMLNode imageNode = wantedNode.children[0] as XMLNode;
-        string sourceString = imageNode.attributes["source"];
-        int startIndex = sourceString.LastIndexOf('/') + 1;
-        string returnValue = sourceString.Substring(startIndex, sourceString.LastIndexOf('.') - startIndex);
+       // return the name of the file from wantedNode
+        foreach (XMLNode node in wantedNode.children)
+        {
+            switch (node.tagName.ToUpper())
+            {
+                case "IMAGE":
+                    string sourceString = node.attributes["source"];
+                    int startIndex = sourceString.LastIndexOf('/') + 1;
+                    return sourceString.Substring(startIndex, sourceString.LastIndexOf('.') - startIndex);
+            }
 
-        return returnValue;
+        }
+
+        return "";
     }
 
     protected string getTilesetExtensionForID(int num)
