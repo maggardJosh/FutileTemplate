@@ -29,7 +29,7 @@ public class C
     }
     public static bool getJumpPress() { return Input.GetButtonDown("Jump"); }
 
-    private static bool getKey(KeyCode[] keys)
+    public static bool getKey(KeyCode[] keys)
     {
         foreach (KeyCode key in keys)
             if (Input.GetKey(key))
@@ -37,7 +37,7 @@ public class C
         return false;
     }
 
-    private static bool getKeyDown(KeyCode[] keys)
+    public static bool getKeyDown(KeyCode[] keys)
     {
         foreach (KeyCode key in keys)
             if (Input.GetKeyDown(key))
